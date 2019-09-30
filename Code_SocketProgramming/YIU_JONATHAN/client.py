@@ -20,7 +20,14 @@ if __name__ == "__main__":
         def serverListener(s):
             while True:
                 data, server_detail = s.recvfrom(1024)
-                log(data.decode())
+
+                words = data.decode().split()
+                #Use del command to remove element at nth position
+                del words[2]
+                del words[2]
+                mod_string = ' '.join(words)
+
+                log(mod_string)
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         server_address = ('localhost', int(portno))
